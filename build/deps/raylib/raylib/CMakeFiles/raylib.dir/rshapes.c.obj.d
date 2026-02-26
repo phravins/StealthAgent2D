@@ -1,0 +1,28 @@
+deps/raylib/raylib/CMakeFiles/raylib.dir/rshapes.c.obj: \
+ D:\GAME\StealthAgent2D\deps\raylib\src\rshapes.c \
+ D:\GAME\StealthAgent2D\deps\raylib\src\raylib.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/stdarg.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/_mingw_stdarg.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/vadefs.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/_mingw.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/_mingw_mac.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdbool.h \
+ D:\GAME\StealthAgent2D\deps\raylib\src\config.h \
+ D:\GAME\StealthAgent2D\deps\raylib\src\rlgl.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/math.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/crtdefs.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/corecrt.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/lib/gcc/x86_64-w64-mingw32/15.2.0/include/float.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/float.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/stdlib.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/lib/gcc/x86_64-w64-mingw32/15.2.0/include/limits.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/limits.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/malloc.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
+ C:/Users/phrav/scoop/apps/gcc/15.2.0/x86_64-w64-mingw32/include/errno.h
