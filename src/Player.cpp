@@ -42,7 +42,28 @@ void Player::Update(float deltaTime) {
         moveDir.x /= length;
         moveDir.z /= length;
         
-        rotation = std::atan2(moveDir.z, moveDir.x);
+        if (dashTimer <= 0.0f) rotation = std::atan2(moveDir.z, moveDir.x);
+        
+        // Walk cycle animation (squash & stretch)
+        if (dashTimer <= 0.0f) {
+            walkCycle += currentSpeed * deltaTime * 0.15f;
+            currentScaleY = 1.0f + std::sin(walkCycle) * 0.15f;
+            currentScaleXZ = 1.0f - std::sin(walkCycle) * 0.05f;
+        }
+    } else {
+        walkCycle = 0.0f;
+    }
+    
+    // Dash input
+    if (IsKeyPressed(KEY_Q) && dashCooldown <= 0.0f && !isCrouching) {
+        dashTimer = 0.15f;
+        dashCooldown = 1.0f;
+        currentScaleY = 0.4f; // Squish on dash start
+        currentScaleXZ = 1.6f;
+        if (moveDir.x == 0.0f && moveDir.z == 0.0f) {
+            moveDir.x = std::cos(rotation);
+            moveDir.z = std::sin(rotation);
+        }
     }
     
     Vector3 oldPos = position;
