@@ -20,5 +20,13 @@ private:
     float crouchSpeed;
     bool isCrouching;
     
-    void ResolveCollision(Vector3 oldPos, Vector3 newPos);
+    // Elastic Movement & Animation variables
+    Vector3 velocity;
+    float dashTimer;
+    float dashCooldown;
+    float currentScaleY;
+    float currentScaleXZ;
+    float walkCycle; // to bounce while moving
+    
+    void ResolveCollision(Vector3 oldPos, Vector3 newPos, bool& outHitWall);
 };
