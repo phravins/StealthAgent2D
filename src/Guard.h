@@ -44,6 +44,12 @@ private:
     Vector3 investigateTarget;
     float investigateTimer;
     
+    // Animation
+    float currentScaleY;
+    float currentScaleXZ;
+    float walkCycle;
+    Vector3 velocity;
+    
     void UpdatePatrol(float dt);
     void UpdateInvestigate(float dt);
     void UpdateChase(float dt);
