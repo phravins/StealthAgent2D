@@ -93,7 +93,7 @@ void Player::Update(float deltaTime) {
     }
 }
 
-void Player::ResolveCollision(Vector3 oldPos, Vector3 newPos) {
+void Player::ResolveCollision(Vector3 oldPos, Vector3 newPos, bool& outHitWall) {
     float ts = level->GetTileSize();
     
     float checkX = newPos.x + (newPos.x > oldPos.x ? radius : -radius);
@@ -107,6 +107,8 @@ void Player::ResolveCollision(Vector3 oldPos, Vector3 newPos) {
             if (level->GetTile(gX, gZ2) == TILE_LOCKED_DOOR) level->SetTile(gX, gZ2, TILE_EMPTY);
         }
         if (level->IsWallAt(gX, gZ1) || level->IsWallAt(gX, gZ2)) {
+            outHitWall = true;
+            velocity.x *= -0.5f; // Bounce
             if (newPos.x > oldPos.x) {
                 newPos.x = gX * ts - radius - 0.1f;
             } else {
@@ -126,6 +128,8 @@ void Player::ResolveCollision(Vector3 oldPos, Vector3 newPos) {
             if (level->GetTile(gX2, gZ) == TILE_LOCKED_DOOR) level->SetTile(gX2, gZ, TILE_EMPTY);
         }
         if (level->IsWallAt(gX1, gZ) || level->IsWallAt(gX2, gZ)) {
+            outHitWall = true;
+            velocity.z *= -0.5f; // Bounce
             if (newPos.z > oldPos.z) {
                 newPos.z = gZ * ts - radius - 0.1f;
             } else {
@@ -149,6 +153,9 @@ void Player::Draw() {
         
         // Orient the player based on their rotation
         rlRotatef(rotation * RAD2DEG, 0.0f, -1.0f, 0.0f);
+        
+        // Apply elastic scale
+        rlScalef(currentScaleXZ, currentScaleY, currentScaleXZ);
         
         // Draw Torso (Cylinder)
         DrawCylinder({ 0.0f, torsoHeight / 2.0f, 0.0f }, radius * 0.8f, radius * 0.9f, torsoHeight, 12, suitColor);
