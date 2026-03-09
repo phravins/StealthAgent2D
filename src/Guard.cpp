@@ -57,6 +57,17 @@ void Guard::Update(float deltaTime) {
             break;
         default: break;
     }
+    
+    // Walk cycle animation
+    float distMoved = Vector3Distance(oldPos, position);
+    if (distMoved > 0.001f) {
+        float speed = distMoved / deltaTime;
+        walkCycle += speed * deltaTime * 0.15f;
+        currentScaleY = 1.0f + std::sin(walkCycle) * 0.15f;
+        currentScaleXZ = 1.0f - std::sin(walkCycle) * 0.05f;
+    } else {
+        walkCycle = 0.0f;
+    }
 }
 
 void Guard::UpdatePatrol(float dt) {
