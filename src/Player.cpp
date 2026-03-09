@@ -9,6 +9,13 @@ Player::Player(Vector3 pos, Level* levelRef)
     isCrouching = false;
     hasKeycard = false;
     hasObjective = false;
+    
+    velocity = {0};
+    dashTimer = 0.0f;
+    dashCooldown = 0.0f;
+    currentScaleY = 1.0f;
+    currentScaleXZ = 1.0f;
+    walkCycle = 0.0f;
 }
 
 void Player::Update(float deltaTime) {
