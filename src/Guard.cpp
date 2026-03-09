@@ -180,6 +180,9 @@ void Guard::Draw() {
             // If stunned, lay flat on the floor
             rlRotatef(90.0f, 0.0f, 0.0f, 1.0f);
             rlTranslatef(-torsoHeight/2.0f, -radius, 0.0f);
+        } else {
+            // Apply elastic scale only when not stunned
+            rlScalef(currentScaleXZ, currentScaleY, currentScaleXZ);
         }
         
         // Draw Torso (Cylinder)
