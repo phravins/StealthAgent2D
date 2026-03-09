@@ -21,7 +21,15 @@ Player::Player(Vector3 pos, Level* levelRef)
 void Player::Update(float deltaTime) {
     isCrouching = IsKeyDown(KEY_LEFT_SHIFT);
     
+    // Elastic physics recovery
+    currentScaleY += (1.0f - currentScaleY) * 10.0f * deltaTime;
+    currentScaleXZ += (1.0f - currentScaleXZ) * 10.0f * deltaTime;
+    
+    if (dashCooldown > 0.0f) dashCooldown -= deltaTime;
+    if (dashTimer > 0.0f) dashTimer -= deltaTime;
+    
     float currentSpeed = isCrouching ? crouchSpeed : walkSpeed;
+    if (dashTimer > 0.0f) currentSpeed = walkSpeed * 4.0f; // Dash speed multiplier
     
     Vector3 moveDir = { 0.0f, 0.0f, 0.0f };
     if (IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) moveDir.z -= 1.0f;
