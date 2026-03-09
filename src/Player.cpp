@@ -66,12 +66,31 @@ void Player::Update(float deltaTime) {
         }
     }
     
+    // Momentum
+    if (dashTimer > 0.0f) {
+        velocity.x = moveDir.x * currentSpeed;
+        velocity.z = moveDir.z * currentSpeed;
+    } else if (moveDir.x != 0.0f || moveDir.z != 0.0f) {
+        velocity.x += (moveDir.x * currentSpeed - velocity.x) * 15.0f * deltaTime;
+        velocity.z += (moveDir.z * currentSpeed - velocity.z) * 15.0f * deltaTime;
+    } else {
+        velocity.x += (0.0f - velocity.x) * 12.0f * deltaTime;
+        velocity.z += (0.0f - velocity.z) * 12.0f * deltaTime;
+    }
+    
     Vector3 oldPos = position;
     Vector3 newPos = oldPos;
-    newPos.x += moveDir.x * currentSpeed * deltaTime;
-    newPos.z += moveDir.z * currentSpeed * deltaTime;
+    newPos.x += velocity.x * deltaTime;
+    newPos.z += velocity.z * deltaTime;
     
-    ResolveCollision(oldPos, newPos);
+    bool hitWall = false;
+    ResolveCollision(oldPos, newPos, hitWall);
+    
+    if (hitWall) {
+        // Elastic bounce effect when hitting wall
+        currentScaleXZ = 1.4f;
+        currentScaleY = 0.6f;
+    }
 }
 
 void Player::ResolveCollision(Vector3 oldPos, Vector3 newPos) {
