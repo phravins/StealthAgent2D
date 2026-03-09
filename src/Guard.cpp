@@ -14,6 +14,11 @@ Guard::Guard(Vector3 pos, Level* levelRef, Player* playerRef)
     currentWaypointIdx = 0;
     waitTimer = 0.0f;
     investigateTimer = 0.0f;
+    
+    currentScaleY = 1.0f;
+    currentScaleXZ = 1.0f;
+    walkCycle = 0.0f;
+    velocity = {0};
 }
 
 void Guard::AddWaypoint(Vector3 wp) {
@@ -24,6 +29,12 @@ void Guard::Update(float deltaTime) {
     if (state == GuardState::STUNNED) {
         return;
     }
+    
+    // Elastic physics recovery
+    currentScaleY += (1.0f - currentScaleY) * 10.0f * deltaTime;
+    currentScaleXZ += (1.0f - currentScaleXZ) * 10.0f * deltaTime;
+    
+    Vector3 oldPos = position;
     
     // Vision
     if (SeePlayer()) {
